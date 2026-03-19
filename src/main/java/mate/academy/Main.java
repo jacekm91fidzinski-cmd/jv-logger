@@ -13,12 +13,18 @@ public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
+        logger.info("Application started");
+
         AuthenticationService authenticationService = new AuthenticationServiceImpl();
         User user;
+
+        String login = "bob";
+        String password = "1234";
+
         try {
-            user = authenticationService.login("bob","1234");
+            user = authenticationService.login(login, password);
         } catch (AuthenticationException e) {
-            logger.error("Login failed for user. login={}","bob", e);
+            logger.error("Login failed for user. login={}", login, e);
             return;
         }
 
